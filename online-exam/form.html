@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Exam Form</title>
+
+  <!-- ✅ Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+  <div class="max-w-4xl mx-auto bg-white shadow-md rounded-md p-6 mt-10">
+
+    <h2 class="text-2xl font-bold text-indigo-600 text-center mb-6">
+      Online Examination Form
+    </h2>
+
+    <!-- ✅ Step Progress Bar -->
+    <div class="flex justify-between mb-8">
+      <div class="step-item text-center">
+        <p class="font-medium">1</p>
+        <p class="text-sm">Personal</p>
+      </div>
+
+      <div class="step-item text-center">
+        <p class="font-medium">2</p>
+        <p class="text-sm">Academic</p>
+      </div>
+
+      <div class="step-item text-center">
+        <p class="font-medium">3</p>
+        <p class="text-sm">Subjects</p>
+      </div>
+
+      <div class="step-item text-center">
+        <p class="font-medium">4</p>
+        <p class="text-sm">Upload</p>
+      </div>
+
+      <div class="step-item text-center">
+        <p class="font-medium">5</p>
+        <p class="text-sm">Review</p>
+      </div>
+    </div>
+
+    <!-- ✅ Step 1: Personal Details -->
+    <div class="step" id="step-1">
+      <h3 class="text-xl font-semibold mb-4">Personal Details</h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" id="fullName" placeholder="Full Name" class="border p-2 rounded w-full" required />
+        <input type="text" id="rollNo" placeholder="Roll No" class="border p-2 rounded w-full" required />
+        <input type="text" id="email" placeholder="Email" class="border p-2 rounded w-full" required />
+        <input type="text" id="phone" placeholder="Phone" class="border p-2 rounded w-full" required />
+      </div>
+
+      <button class="next bg-indigo-600 text-white px-6 py-2 mt-6 rounded hover:bg-indigo-700">
+        Next
+      </button>
+    </div>
+
+    <!-- ✅ Step 2: Academic Details -->
+    <div class="step hidden" id="step-2">
+      <h3 class="text-xl font-semibold mb-4">Academic Details</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" id="branch" placeholder="Branch" class="border p-2 rounded w-full" required />
+        <input type="text" id="semester" placeholder="Semester" class="border p-2 rounded w-full" required />
+      </div>
+
+      <div class="flex justify-between mt-6">
+        <button class="prev bg-gray-300 px-6 py-2 rounded hover:bg-gray-400">
+          Back
+        </button>
+
+        <button class="next bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- ✅ Step 3: Subject Selection -->
+    <div class="step hidden" id="step-3">
+      <h3 class="text-xl font-semibold mb-4">Select Subjects</h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <label><input type="checkbox" value="Maths" /> Maths</label>
+        <label><input type="checkbox" value="Physics" /> Physics</label>
+        <label><input type="checkbox" value="Chemistry" /> Chemistry</label>
+        <label><input type="checkbox" value="CS" /> Computer Science</label>
+      </div>
+
+      <div class="flex justify-between mt-6">
+        <button class="prev bg-gray-300 px-6 py-2 rounded hover:bg-gray-400">
+          Back
+        </button>
+
+        <button class="next bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- ✅ Step 4: Upload -->
+    <div class="step hidden" id="step-4">
+      <h3 class="text-xl font-semibold mb-4">Upload Documents</h3>
+
+      <input type="file" id="photo" class="border p-2 w-full rounded" />
+      <input type="file" id="signature" class="border p-2 mt-2 w-full rounded" />
+
+      <div class="flex justify-between mt-6">
+        <button class="prev bg-gray-300 px-6 py-2 rounded hover:bg-gray-400">
+          Back
+        </button>
+
+        <button class="next bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- ✅ Step 5: Review -->
+    <div class="step hidden" id="step-5">
+      <h3 class="text-xl font-semibold mb-4">Review & Submit</h3>
+
+      <div id="reviewData" class="p-4 border rounded text-gray-700"></div>
+
+      <div class="flex justify-between mt-6">
+        <button class="prev bg-gray-300 px-6 py-2 rounded hover:bg-gray-400">
+          Back
+        </button>
+
+        <button id="submitBtn" class="next bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+  Submit & Proceed to Payment
+</button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ✅ STEP 6: PAYMENT -->
+<div class="step hidden" id="step-6">
+  <h3 class="text-xl font-semibold mb-4">UPI Payment</h3>
+
+  <p class="text-gray-600 mb-4">
+    Pay the exam fee via UPI. Scan QR or enter UPI ID manually.
+  </p>
+
+  <div class="flex flex-col items-center gap-4">
+
+    <!-- Dummy QR -->
+    <div class="border p-4 rounded">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=test@upi&pn=Test%20Name&am=500&cu=INR" 
+           class="w-48 h-48" />
+    </div>
+
+    <p class="text-gray-700">
+      <strong>Amount:</strong> ₹500
+    </p>
+
+    <p class="text-gray-700">
+      <strong>UPI ID:</strong> test@upi
+    </p>
+
+    <input
+      type="text"
+      placeholder="Enter your UPI Reference ID"
+      id="upiRef"
+      class="border p-2 rounded w-full max-w-sm"
+      required
+    />
+
+    <button id="paymentBtn"
+      class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 mt-4">
+      Confirm Payment
+    </button>
+  </div>
+</div>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
