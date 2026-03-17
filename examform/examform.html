@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exam Form | Student Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow px-8 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-semibold text-blue-700">Examination Form</h1>
+
+    <button
+      onclick="location.href='../dashboard/dashboard.html'"
+      class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">
+      ← Back to Dashboard
+    </button>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6 space-y-6">
+
+    <!-- Student Info -->
+    <section class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-lg font-semibold mb-4">Student Details</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <p>Name: <strong id="studentName"></strong></p>
+        <p>PRN: <strong id="studentPRN"></strong></p>
+        <p>Branch: <strong id="branch"></strong></p>
+        <p>Semester: <strong id="semester"></strong></p>
+      </div>
+    </section>
+
+    <!-- Exam Form -->
+    <section class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-lg font-semibold mb-4">Exam Form</h2>
+
+      <form id="examForm" class="space-y-4">
+
+        <!-- Exam Type -->
+        <div>
+          <label class="block text-sm font-medium">Exam Type</label>
+          <select id="examType" class="w-full border p-2 rounded">
+            <option value="">Select</option>
+            <option>Regular</option>
+            <option>ATKT</option>
+          </select>
+        </div>
+
+        <!-- Exam Center -->
+        <div>
+          <label class="block text-sm font-medium">Exam Center</label>
+          <input id="examCenter" class="w-full border p-2 rounded" placeholder="Enter Exam Center" />
+        </div>
+
+        <!-- Contact -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input id="mobile" class="border p-2 rounded" placeholder="Mobile Number" />
+          <input id="email" class="border p-2 rounded" placeholder="Email ID" />
+        </div>
+
+        <!-- Subjects -->
+        <div>
+          <p class="font-medium mb-2">Subjects</p>
+          <label><input type="checkbox" value="DBMS"> DBMS</label><br>
+          <label><input type="checkbox" value="OS"> Operating System</label><br>
+          <label><input type="checkbox" value="CN"> Computer Networks</label><br>
+          <label><input type="checkbox" value="SE"> Software Engineering</label>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="border-t pt-4">
+          <h3 class="font-semibold mb-2">Payment Details</h3>
+
+          <p class="text-sm mb-2">Exam Fee: <strong>₹1200</strong></p>
+
+          <img src="../assets/qr.png"
+               class="w-40 border rounded mb-2"
+               alt="College QR">
+
+          <input
+            id="txnId"
+            class="w-full border p-2 rounded mb-2"
+            placeholder="Transaction ID / UTR No">
+
+          <label class="text-sm">
+            <input type="checkbox" id="paymentConfirm">
+            I confirm that payment is completed
+          </label>
+        </div>
+
+        <!-- Declaration -->
+        <div>
+          <label class="text-sm">
+            <input type="checkbox" id="declaration">
+            I declare that the above information is correct.
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <button
+          id="submitBtn"
+          class="bg-green-600 text-white px-6 py-2 rounded">
+          Submit & Generate PDF
+        </button>
+
+        <p id="statusMsg" class="hidden text-sm font-medium"></p>
+
+      </form>
+    </section>
+  </main>
+
+  <script src="./examform.js"></script>
+</body>
+</html>
