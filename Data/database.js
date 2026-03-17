@@ -6,8 +6,8 @@
 export const students = [
   {
     id: 1,
-    prn: "22IT001",
-    password: "student001",
+    prn: "001",
+    password: "stud",
 
     profile: {
       name: "samiksha Patil",
@@ -178,4 +178,103 @@ export const students = [
       lastDate: "2026-02-10"
     }
   }
+];
+
+export const users = [
+
+/************************************************
+ 👨‍💼 PRINCIPAL
+************************************************/
+{
+id: 1,
+name: "Dr. C. F. Pothbare",
+username: "principal",
+password: "1234",
+email: "pothbare@college.edu",
+phone: "9999990101",
+dept: "Administration",
+role: "principal",
+pfp: "./assets/principal.jpg"
+},
+
+/************************************************
+ 👨‍🏫 HODs
+************************************************/
+
+{
+id: 2,
+name: "Dr. S. R. Patil",
+username: "hod_it",
+password: "1234",
+email: "hod_it@college.edu",
+phone: "9999990201",
+dept: "Information Technology",
+role: "hod",
+pfp: "./assets/hod_it.jpg"
+},
+
+{
+id: 3,
+name: "Dr. A. K. Deshmukh",
+username: "hod_mech",
+password: "1234",
+email: "hod_mech@college.edu",
+phone: "9999990202",
+dept: "Mechanical",
+role: "hod",
+pfp: "./assets/hod_mech.jpg"
+},
+
+{
+id: 4,
+name: "Dr. R. P. Sharma",
+username: "hod_elec",
+password: "1234",
+email: "hod_elec@college.edu",
+phone: "9999990203",
+dept: "Electrical",
+role: "hod",
+pfp: "./assets/hod_elec.jpg"
+},
+
+{
+id: 5,
+name: "Dr. V. M. Joshi",
+username: "hod_civil",
+password: "1234",
+email: "hod_civil@college.edu",
+phone: "9999990204",
+dept: "Civil",
+role: "hod",
+pfp: "./assets/hod_civil.jpg"
+},
+
+/************************************************
+ 👨‍🏫 FACULTY (OPTIONAL - FUTURE USE)
+************************************************/
+
+{
+id: 6,
+name: "Prof. Rohit Bansod",
+username: "fac_it_1",
+password: "1234",
+email: "rohit@college.edu",
+phone: "9999990301",
+dept: "Information Technology",
+role: "faculty",
+pfp: "./assets/faculty1.jpg"
+},
+
+{
+id: 7,
+name: "Prof. Satyajeet Patil",
+username: "fac_mech_1",
+password: "1234",
+email: "satyajeet@college.edu",
+phone: "9999990302",
+dept: "Mechanical",
+role: "faculty",
+pfp: "./assets/faculty2.jpg"
+}
+
 ];
