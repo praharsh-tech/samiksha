@@ -1,96 +1,139 @@
 /************************************************
- ✅ Student Dashboard Logic (Frontend Only)
+ ✅ Student Dashboard Logic (MATCHED TO YOUR DB)
 ************************************************/
+
 
 // 🔒 Session check
 const studentData = localStorage.getItem("loggedInStudent");
+
 if (!studentData) {
   window.location.href = "../index.html";
 }
 
 const student = JSON.parse(studentData);
 
-// 🚀 Run after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ===============================
      👤 BASIC INFO
   =============================== */
-  document.querySelector("h2 span").textContent = student.name;
 
-  document.querySelector(
-    "section p.text-sm.text-gray-600"
-  ).innerHTML = `
+  document.getElementById("studentName").textContent =
+    student.profile.name;
+
+  document.getElementById("studentInfo").innerHTML = `
     PRN: <span class="font-medium">${student.prn}</span> |
-    ${student.branch} | ${student.year} | Division ${student.division}
+    ${student.profile.branch} |
+    ${student.profile.year} |
+    Division ${student.profile.division}
   `;
 
   /* ===============================
-     📊 ATTENDANCE CALCULATION
+     🎓 BADGES
   =============================== */
-  const attendanceValues = Object.values(student.attendance);
-  const totalAttendance = attendanceValues.reduce(
-    (sum, val) => sum + val,
-    0
-  );
-  const avgAttendance = Math.round(
-    totalAttendance / attendanceValues.length
-  );
+
+  document.getElementById("semesterBadge").textContent =
+    "Sem " + student.profile.year;
+
+  document.getElementById("statusBadge").textContent =
+    student.examForm ? "Active" : "Pending";
+
+  /* ===============================
+     📊 ATTENDANCE (NUMBER)
+  =============================== */
 
   const attendanceEl = document.getElementById("attendancePercent");
-  attendanceEl.textContent = `${avgAttendance}%`;
 
-  // Color logic
-  attendanceEl.classList.remove("text-green-600", "text-red-600");
+  const attendance = student.attendance || 0;
+
+  attendanceEl.textContent = attendance + "%";
+
   attendanceEl.classList.add(
-    avgAttendance < 75 ? "text-red-600" : "text-green-600"
+    attendance < 75 ? "text-red-600" : "text-green-600"
   );
 
   /* ===============================
-     📝 RESULT CALCULATION
+     📝 RESULT (NUMBER)
   =============================== */
-  const marks = Object.values(student.marks);
-  const isFail = marks.some(mark => mark < 18);
 
+  const marks = student.marks || 0;
   const resultEl = document.getElementById("resultStatus");
 
-  if (isFail) {
+  if (marks < 35) {
     resultEl.textContent = "FAIL";
-    resultEl.classList.remove("text-blue-600");
     resultEl.classList.add("text-red-600");
   } else {
     resultEl.textContent = "PASS";
-    resultEl.classList.remove("text-red-600");
     resultEl.classList.add("text-green-600");
   }
 
   /* ===============================
-     📝 EXAM FORM STATUS
+     📝 EXAM FORM (BOOLEAN)
   =============================== */
-  const examStatusEl = document.querySelector(
-    "section:last-of-type p.text-lg"
-  );
-  const examDateEl = document.querySelector(
-    "section:last-of-type p.text-sm"
-  );
 
-  if (student.examForm.filled) {
+  const examStatusEl = document.getElementById("examStatus");
+  const examDateEl = document.getElementById("examDate");
+
+  if (student.examForm) {
     examStatusEl.textContent = "Filled";
     examStatusEl.classList.add("text-green-600");
-    examStatusEl.classList.remove("text-red-600");
   } else {
     examStatusEl.textContent = "Not Filled";
     examStatusEl.classList.add("text-red-600");
-    examStatusEl.classList.remove("text-green-600");
   }
 
-  examDateEl.textContent = `Last date: ${student.examForm.lastDate}`;
-});
+  examDateEl.textContent = "Last date: 10 Feb 2026";
 
-/* ===============================
-   🔓 LOGOUT
+  /* ===============================
+   🖼 PROFILE SECTION (SAFE)
 =============================== */
-document.querySelector("button").addEventListener("click", () => {
-  localStorage.removeItem("loggedInStudent");
-  window.location.href = "../index.html";
+
+const img = document.getElementById("profileImg");
+
+// image
+img.src = student.pfp 
+
+// img.onerror = () => {
+//   img.onerror = null; // 🛑 stop loop
+//   img.src = "https://i.pravatar.cc/150?img=5"; // fallback online
+// };
+
+// text
+document.getElementById("profileName").textContent =
+  student.profile.name;
+
+document.getElementById("profileBranch").textContent =
+  student.profile.branch;
+
+document.getElementById("profileYear").textContent =
+  student.profile.year;
+
+document.getElementById("profileDiv").textContent =
+  student.profile.division;
+
+document.getElementById("profilePRN").textContent =
+  student.prn;
+
+// status
+const statusEl = document.getElementById("profileStatus");
+
+if (student.examForm) {
+  statusEl.textContent = "Active";
+  statusEl.className =
+    "bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm";
+} else {
+  statusEl.textContent = "Pending";
+  statusEl.className =
+    "bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm";
+}
+
+  /* ===============================
+     🔓 LOGOUT
+  =============================== */
+
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("loggedInStudent");
+    window.location.href = "../index.html";
+  });
+
 });
