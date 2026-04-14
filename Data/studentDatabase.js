@@ -3,8 +3,8 @@ export const students = [
 /*************** COMPUTER (10) ***************/
 {id:1,prn:"CSE101",password:"1234",profile:{name:"Rahul Sharma",branch:"Computer",year:"2nd Year",division:"A"},attendance:82,marks:34,examForm:true},
 {id:2,prn:"CSE102",password:"1234",profile:{name:"Amit Verma",branch:"Computer",year:"1st Year",division:"B"},attendance:91,marks:85,examForm:true},
-{id:3,prn:"CSE103",password:"1234",profile:{name:"samiksha patil",branch:"Computer",year:"3rd Year",division:"A"},attendance:88,marks:91,examForm:true,pfp:"..Data/assets/samikha.jpeg"},
-{id:4,prn:"CSE104",password:"1234",profile:{name:"Riya Patel",branch:"Computer",year:"2nd Year",division:"B"},attendance:76,marks:74,examForm:true},
+{id:3,prn:"CSE103",password:"1234",profile:{name:"samiksha patil",branch:"Computer",year:"3rd Year",division:"A"},attendance:88,marks:91,examForm:true,pfp:"../Data/assets/samikha.jpeg"},
+{id:4,prn:"CSE104",password:"1234",profile:{name:"Vedika sahu",branch:"Computer",year:"3nd Year",division:"A"},attendance:76,marks:74,examForm:true,pfp:"../Data/assets/VEDIKHA.jpeg"},
 {id:5,prn:"CSE105",password:"1234",profile:{name:"Kunal Shah",branch:"Computer",year:"1st Year",division:"A"},attendance:69,marks:68,examForm:false},
 {id:6,prn:"CSE106",password:"1234",profile:{name:"Aditya Joshi",branch:"Computer",year:"2nd Year",division:"A"},attendance:95,marks:88,examForm:true},
 {id:7,prn:"CSE107",password:"1234",profile:{name:"Pooja Desai",branch:"Computer",year:"3rd Year",division:"B"},attendance:84,marks:80,examForm:true},

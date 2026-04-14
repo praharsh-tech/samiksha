@@ -90,13 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const img = document.getElementById("profileImg");
 
-// image
-img.src = student.pfp 
+img.src = student.pfp;
 
-// img.onerror = () => {
-//   img.onerror = null; // 🛑 stop loop
-//   img.src = "https://i.pravatar.cc/150?img=5"; // fallback online
-// };
+img.onerror = () => {
+  img.onerror = null;
+  img.src = "https://i.pravatar.cc/150?img=5";
+};
 
 // text
 document.getElementById("profileName").textContent =

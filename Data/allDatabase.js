@@ -17,7 +17,7 @@ dept: "Administration"
 ************************************************/
 {
 id: 2,
-name: "HOD Computer",
+name: "Satyajeet deshmukh",
 username: "hod_comp",
 password: "1234",
 role: "hod",
@@ -26,7 +26,7 @@ dept: "Computer"
 {
 id: 3,
 name: "HOD Civil",
-username: "hod_civil",
+username: "RASHMI",
 password: "1234",
 role: "hod",
 dept: "Civil"
